@@ -1,4 +1,7 @@
-{!! Form::open(array('url' => 'admin/objective/add')) !!}
+{!! Form::open(array('url' => 'admin/objectives/add')) !!}
+
+<input type="date" name="week_of" value="{{ date('Y-m-d') }}" />
+
 @foreach ($section as $subject)
 
 	<h2>{{ $subject->name }}</h2>
@@ -8,7 +11,7 @@
 
 		<li>
 			<label>{{$day}}
-			<textarea name="objective[s_{{$subject->id}}][{{strtolower($day)}}]"></textarea>
+			<textarea name="objective[s_{{$subject->id}}][{{strtolower($day)}}]">{{$subject->name}} on {{$day}}</textarea>
 			</label>
 		</li>
 
@@ -16,4 +19,5 @@
 	</ul>
 @endforeach
 
+<input type="submit" value="Save Changes">
 {!! Form::close() !!}
